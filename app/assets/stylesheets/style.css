@@ -18,9 +18,14 @@ h3 {
  
 }
 
+#user-avatar {
+	margin: 30px;	
+}
+
 #friends-list {
 	display: flex;
 	flex-wrap: wrap;
+	margin: 30px;
 }
 
 .friend {
