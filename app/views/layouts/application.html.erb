@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>WebimTestTask</title>
-    <%= csrf_meta_tags %>
+<head>
+  <meta charset="utf-8">
+  <title>SocialFreak</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to 'Webim-Test-Task Andy', root_path, class: 'navbar-brand' %>
+    </div>
+    <div id="navbar">
+      <% if user_signed_in? %>
+        <ul class="nav navbar-nav pull-right">
+  	<%= link_to "Выйти", destroy_user_session_path, method: :delete, :class => 'btn btn-default navbar-btn'  %>
 
-  <body>
-    <%= yield %>
-  </body>
+
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav">
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+
+
+</body>
 </html>

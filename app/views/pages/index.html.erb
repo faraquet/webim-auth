@@ -1,6 +1,15 @@
-<h1> Hello! </h1>
+
 <% if user_signed_in? %>
-	<%= current_user.name %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <ul>
+        <li><strong>Name:</strong> <%= current_user.name %></li>
+        <li><strong>Provider:</strong> <%= current_user.provider %></li>
+        <li><strong>uID:</strong> <%= current_user.uid %></li>
+      </ul>
+    </div>
+  </div>
 <% else %>
-  <%= link_to "Autorize VK", user_vkontakte_omniauth_authorize_path %>
-<% end %>
+<h1> Hello! You are not logged in </h1>
+	  <%= link_to "Authorize VK", user_vkontakte_omniauth_authorize_path, :class => 'btn btn-default navbar-btn'  %>
+	<% end %>

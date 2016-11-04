@@ -13,7 +13,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'omniauth-vkontakte'
-
+gem 'bootstrap-sass'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
