@@ -4,7 +4,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     puts request.env['omniauth.auth']
     @user.remember_me
     sign_in(@user)
-
     redirect_to root_path
   end
 end

@@ -1,7 +1,8 @@
-
 <% if user_signed_in? %>
+
   <div class="panel panel-default">
     <div class="panel-body">
+    <div id="avatar"></div>
       <ul>
         <li><strong>Name:</strong> <%= current_user.name %></li>
         <li><strong>Provider:</strong> <%= current_user.provider %></li>
@@ -9,7 +10,15 @@
       </ul>
     </div>
   </div>
+  <script>
+  	userGet(<%= current_user.uid %>);
+  </script>
+<div class="panel panel-default">
+    <div class="panel-body" id="friends-list">
+    </div>
+</div>
+
 <% else %>
 <h1> Hello! You are not logged in </h1>
 	  <%= link_to "Authorize VK", user_vkontakte_omniauth_authorize_path, :class => 'btn btn-default navbar-btn'  %>
-	<% end %>
+<% end %>
