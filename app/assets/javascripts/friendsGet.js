@@ -1,7 +1,7 @@
 function friendsGet(uid){
 	$.ajax({
     url: 'http://api.vk.com/method/friends.get',
-  	data: { user_id: uid, count: 5, fields: 'photo_200' },
+  	data: { user_id: uid, count: 5, fields: 'photo_200', order: 'random' },
     type: 'GET',
     dataType: 'jsonp',
     crossDomain: true,
