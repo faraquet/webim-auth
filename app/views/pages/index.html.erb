@@ -1,24 +1,29 @@
 <% if user_signed_in? %>
-
-  <div class="panel panel-default">
-    <div class="panel-body">
-    <div id="avatar"></div>
-      <ul>
-        <li><strong>Name:</strong> <%= current_user.name %></li>
-        <li><strong>Provider:</strong> <%= current_user.provider %></li>
-        <li><strong>uID:</strong> <%= current_user.uid %></li>
-      </ul>
-    </div>
-  </div>
-  <script>
-  	userGet(<%= current_user.uid %>);
-  </script>
-<div class="panel panel-default">
-    <div class="panel-body" id="friends-list">
-    </div>
+<div class="row">
+   <div class="col-md-4">
+      <div class="panel panel-default">
+      <h3> Hey! It's you </h3>
+         <div class="panel-body">
+         		   <div id="avatar"></div>
+			            <ul>
+			               <li><strong>Name:</strong> <%= current_user.name %></li>
+			               <li><strong>uID:</strong> <%= current_user.uid %></li>
+			            </ul>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-8">
+      <div class="panel panel-default">
+      <h3> Your friends </h3>
+         <div class="panel-body" id="friends-list">
+         </div>
+      </div>
+   </div>
 </div>
-
+<script>
+   userGet(<%= current_user.uid %>);
+</script>
 <% else %>
-<h1> Hello! You are not logged in </h1>
-	  <%= link_to "Authorize VK", user_vkontakte_omniauth_authorize_path, :class => 'btn btn-default navbar-btn'  %>
+<h2> Hello! You are not logged in </h2> 
+<%= link_to "Sign in VK", user_vkontakte_omniauth_authorize_path, :class => 'btn btn-default navbar-btn'  %>
 <% end %>

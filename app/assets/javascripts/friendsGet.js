@@ -8,12 +8,24 @@ function friendsGet(uid){
     success: function(data){
 	    var e = data.response;
 		    $.each(e, function(index, value) {
-				  var img=document.createElement("img");
-				  console.log(value);
-    			img.src=value.photo_200;
+				  var div =document.createElement("div");
+				  div.className = "friend";
+				  var span = document.createElement("span");
+				  var img = document.createElement("img");
+				  span.textContent=value.first_name + " " + value.last_name;
+				   console.log(value);
+    			if (typeof value.photo_200 !== "undefined") {
+						   img.src=value.photo_200;
+						} else {
+							img.src="/assets/images/no-avatar.png";
+						}
+					img.width = 200;
+					img.height = 200;
 		    	img.id="friend" + index;
-		    	img.class="img-rounded";
-		    	document.getElementById("friends-list").appendChild(img);
+		    	img.className = "img-rounded";
+		    	div.appendChild(img);
+		    	div.appendChild(span);
+		    	document.getElementById("friends-list").appendChild(div);
 				}); 
     }
 });
@@ -22,16 +34,17 @@ function friendsGet(uid){
 function userGet(uid){
 	$.ajax({
     url: 'http://api.vk.com/method/users.get',
-  	data: { user_id: uid, fields: 'photo_200' },
+  	data: { user_id: uid, fields: 'photo_400_orig' },
     type: 'GET',
     dataType: 'jsonp',
     crossDomain: true,
     success: function(data){
-
 	    var e = data.response;
 			var img=document.createElement("img");
-    	img.src=e[0].photo_200;
-		  img.class="img-rounded";
+    	img.src=e[0].photo_400_orig;
+		  img.id="user-avatar";
+		  img.className = "img-thumbnail";
+		  img.width = 275;
 		  document.getElementById("avatar").appendChild(img);
 		  friendsGet(uid);
     }
