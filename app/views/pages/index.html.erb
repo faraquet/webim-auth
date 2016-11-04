@@ -1,0 +1,6 @@
+<h1> Hello! </h1>
+<% if user_signed_in? %>
+	<%= current_user.name %>
+<% else %>
+  <%= link_to "Autorize VK", user_vkontakte_omniauth_authorize_path %>
+<% end %>
