@@ -8,7 +8,7 @@ function friendsGet(uid){
     success: function(data){
       var e = data.response;
         $.each(e, function(index, value) {
-          var div =document.createElement("div");
+          var div = document.createElement("div");
           div.className = "friend";
           var span = document.createElement("span");
           var img = document.createElement("img");
@@ -20,7 +20,7 @@ function friendsGet(uid){
             }
           img.width = 200;
           img.height = 200;
-          img.id="friend" + index;
+          img.id = "friend" + index;
           img.className = "img-rounded";
           div.appendChild(img);
           div.appendChild(span);
@@ -39,14 +39,13 @@ function userGet(uid){
     crossDomain: true,
     success: function(data){
       var e = data.response;
-      console.log(e);
-      var img=document.createElement("img");
+      var img = document.createElement("img");
       if (typeof e[0].photo_200 !== "undefined") {
               img.src=e[0].photo_200;
             } else {
-              img.src="/assets/images/no-avatar.png";
+              img.src = "/assets/images/no-avatar.png";
       }
-      img.id="user-avatar";
+      img.id = "user-avatar";
       img.className = "img-thumbnail";
       img.width = 200;
       document.getElementById("avatar").appendChild(img);
