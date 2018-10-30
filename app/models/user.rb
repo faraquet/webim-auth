@@ -8,11 +8,11 @@ class User < ApplicationRecord
          :trackable,
          :validatable,
          :omniauthable, omniauth_providers: [:vkontakte]
-  
+
   def remember_me
     true
   end
-  
+
   def self.from_vkontakte(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.name = auth.info.name
